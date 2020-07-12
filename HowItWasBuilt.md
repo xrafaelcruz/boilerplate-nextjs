@@ -19,6 +19,7 @@ yarn dev
 When you run `yarn dev` the `next-env.d.ts` file will be created. It's a declaration file to work with the next types.
 
 `tsconfig.json` will be modified, so change `strict: true`, it will not allow anys for example.
+Add `"baseUrl": "src"`
 
 Move `pages` to `src/pages`.
 
@@ -94,7 +95,7 @@ Config to React Version.
 "settings": { "react": { "version": "detect" } }
 ```
 
-`Package.json`
+In `package.json`
 
 ```bash
 "scripts": { ..., "lint": "eslint src" }
@@ -125,7 +126,7 @@ _Prevent errors in commits._
 yarn add --dev linst-staged husky
 ```
 
-`Package.json`
+In `package.json`
 
 ```bash
 "scripts": { ..., "lint": "eslint src --max-warnings=0" },
@@ -151,7 +152,7 @@ Create `jest.config.js` file and add the settings.
 Create `.babelrc` file and add the settings(To work well with jest).
 Create `.jest/setup.ts`.
 
-`Package.json`
+In `package.json`
 
 ```bash
 "scripts": { ..., "test": "jest" },
@@ -173,7 +174,7 @@ In `.jest/setup.ts`
 import '@testing-library/jest-dom'
 ```
 
-`Package.json`
+In `package.json`
 `--bail` _to stop in first error_
 `--findRelatedTests` _Run tests just in testable changed files_
 
@@ -183,6 +184,8 @@ import '@testing-library/jest-dom'
 ```
 
 #### Styled-components
+
+_css-in-js._
 
 ```bash
 yarn add --dev @types/styled-components babel-plugin-styled-components
@@ -215,3 +218,100 @@ In `.jest/setup.ts`
 ```bash
 import 'jest-styled-components'
 ```
+
+#### Storybook
+
+_To preview components and your documentation._
+
+```bash
+npx -p @storybook/cli sb init --type react
+```
+
+Will be create `.storybook` and `stories` folders
+
+Will be modified `package.json`
+After insert in `scripts storybook and build-storybook` the params `-s ./public` to use static images.
+
+```bash
+"scripts": {
+    ...,
+    "storybook": "start-storybook -s ./public -p 6006",
+    "build-storybook": "build-storybook -s ./public"
+},
+"devDependencies": {
+    "@babel/core": "^7.10.4",
+    ...,
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^5.3.19",
+    ...,
+    "babel-loader": "^8.1.0",
+    ...
+}
+```
+
+To work with Typescript
+
+```bash
+yarn add --dev @storybook/preset-typescript
+```
+
+In `.storybook/main.js`
+
+```bash
+stories: ['../src/components/**/stories.tsx']
+addons: ['@storybook/preset-typescript', ...]
+```
+
+Create decorator `.storybook/withGlobalStyles.tsx` and add settings.
+Create `.storybook/config.js` and add settings.
+
+Addon Knobs
+
+```bash
+yarn add --dev @storybook/addon-knobs
+```
+
+In `.storybook/main.js`
+
+```bash
+addons: [..., '@storybook/addon-knobs/register']
+```
+
+In `src/components/Main/stories.tsx`
+
+```bash
+import { withKnobs, text } from '@storybook/addon-knobs'
+```
+
+#### PWA
+
+_To work offline, push notifications and more._
+
+```bash
+yarn add next-pwa
+```
+
+Create `next.config.js` and add settings.
+Create `public/manifest.json` and add settings.
+
+In `src/pages/_app`
+
+```bash
+<link rel="manifest" href="/manifest.json" />
+```
+
+Install cross-env to set NODE_ENV in windows
+
+```bash
+npm i -g cross-env
+```
+
+```bash
+cross-env NODE_ENV=production yarn build
+```
+
+Will be create `public/sw.js` and `public/workbox-*.js`.
+Add both in `.gitignore`
