@@ -15,7 +15,7 @@ yarn dev
 #### Use as template
 
 ```bash
-npx create-react-app -e https://github.com/xrafaelcruz/boilerplate-nextjs
+npx create-next-app -e https://github.com/xrafaelcruz/boilerplate-nextjs
 ```
 
 [How it was built](https://github.com/xrafaelcruz/boilerplate-nextjs/blob/master/HowItWasBuilt.md)
