@@ -17,16 +17,18 @@ Delete `styles/global.css`.
 
 ```bash
 touch tsconfig.json
-yarn add --dev typescript @types/react @types/node
+yarn add --dev typescript @types/react
 yarn dev
 ```
 
 When you run `yarn dev` the `next-env.d.ts` file will be created. It's a declaration file to work with the next types.
 
 `tsconfig.json` will be modified, so change `strict: true`, it will not allow anys for example.
-Add `"baseUrl": "src"`
 
 Move `pages` to `src/pages`.
+Rename `src/pages/index.js` to `src/pages/index.tsx`.
+
+In `tsconfig.json` add `"baseUrl": "src"` and update imports.
 
 #### EditorConfig
 
