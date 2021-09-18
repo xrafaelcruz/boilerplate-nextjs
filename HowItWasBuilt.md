@@ -3,10 +3,15 @@
 #### Create nextjs project
 
 ```bash
-npx create-next-app
+yarn create next-app
+```
+```bash
+What is your project named? boilerplate
 ```
 
 Delete `pages/api`.
+Delete `pages/_app.js`.
+Delete `styles/global.css`.
 
 #### Typescript
 
