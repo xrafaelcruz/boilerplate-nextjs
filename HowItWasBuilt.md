@@ -1,6 +1,6 @@
-## How it was built (2020)
+# How it was built (2021)
 
-#### Create nextjs project
+## Create nextjs project
 
 ```bash
 yarn create next-app
@@ -13,7 +13,7 @@ Delete `pages/api`.
 Delete `pages/_app.js`.
 Delete `styles/global.css`.
 
-#### Typescript
+## Typescript
 
 ```bash
 touch tsconfig.json
@@ -30,20 +30,20 @@ Rename `src/pages/index.js` to `src/pages/index.tsx`.
 
 In `tsconfig.json` add `"baseUrl": "src"` and update imports.
 
-#### EditorConfig
+## EditorConfig
 
 _It will start the files with some settings like the tab size.._
 
 Create the file `.editorConfig` and add the settings.
 
-#### Eslint
+## Eslint
 
 _Find and fix problems in javascript code._
 
 Install plugin ESLint in Visual Studio Code.
 
 ```bash
-npx eslit --init
+npx eslint --init
 ```
 
 - To check syntax and find problems
@@ -57,10 +57,12 @@ npx eslit --init
 Copy plugins and install with yarn.
 
 ```bash
-yarn add --dev eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest eslint@latest
+yarn add --dev eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest
 ```
 
 The `.eslintrc.json` file will be created.
+
+Add `next/core-web-vitals` in extends.
 
 React Hooks Lint.
 
@@ -96,7 +98,7 @@ Disable explicit module boundary types, it warns that it is always necessary to 
 "rules": { ..., "@typescript-eslint/explicit-module-boundary-types": "off" }
 ```
 
-Config to React Version.
+Config to React Version -> plugin:react/recommended
 
 ```bash
 "settings": { "react": { "version": "detect" } }
@@ -105,27 +107,36 @@ Config to React Version.
 In `package.json`
 
 ```bash
-"scripts": { ..., "lint": "eslint src" }
+"scripts": { ..., "lint": "next lint src" }
 ```
 
-#### Prettier(with ESLint)
+## Prettier(with ESLint)
 
 _To format file like use single quote to everybody dev..._
 
 ```bash
-yarn add --dev eslint-config-prettier eslint-plugin-prettier
+yarn add --dev --exact prettier
+```
+
+Create file `.prettierrc.json` and add the settings.
+
+
+```bash
+yarn add --dev eslint-plugin-prettier eslint-config-prettier 
 ```
 
 In `.eslintrc.json`
 
 ```bash
 "extends": [..., "plugin:prettier/recommended"]
+"rules": {..., "prettier/prettier": ["error", { "endOfLine": "auto" }]}
 ```
 
-Create file `.prettierrc` and add the settings.
 Create file `.vscode/settings.json` and add the settings.
 
-#### git hook with Husky and Lint-Staged
+*You may need to restart vscode*
+
+## git hook with Husky and Lint-Staged
 
 _Prevent errors in commits._
 
@@ -141,7 +152,7 @@ In `package.json`
 "lint-staged": { "src/**/*": ["yarn lint --fix"] }
 ```
 
-#### Jest
+## Jest
 
 _Framework of test._
 
@@ -165,7 +176,7 @@ In `package.json`
 "scripts": { ..., "test": "jest" },
 ```
 
-#### Testing Library and jest-dom
+## Testing Library and jest-dom
 
 _Testing Library: Library of tests to work with react components._
 _jest-dom: Matchers of Jest_
@@ -190,7 +201,7 @@ In `package.json`
 "lint-staged": { "src/**/*": [..., "yarn test --findRelatedTests --bail"] }
 ```
 
-#### Styled-components
+## Styled-components
 
 _css-in-js._
 
@@ -226,7 +237,7 @@ In `.jest/setup.ts`
 import 'jest-styled-components'
 ```
 
-#### Storybook
+## Storybook
 
 _To preview components and your documentation._
 
@@ -293,7 +304,7 @@ In `src/components/Main/stories.tsx`
 import { withKnobs, text } from '@storybook/addon-knobs'
 ```
 
-#### PWA
+## PWA
 
 _To work offline, push notifications and more._
 
