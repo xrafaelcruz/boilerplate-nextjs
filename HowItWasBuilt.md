@@ -176,13 +176,8 @@ In `.jest/setup.ts`
 import '@testing-library/jest-dom'
 ```
 
-In `package.json`
-`--bail` _to stop in first error_
-`--findRelatedTests` _Run tests just in testable changed files_
-
 ```bash
 "scripts": { ..., "test:watch": "yarn test --watch" },
-"lint-staged": { "src/**/*": [..., "yarn test --findRelatedTests --bail"] }
 ```
 
 ## Styled-components
@@ -204,10 +199,6 @@ yarn add styled-components
 ```
 
 Create `src/pages/_document.tsx` and add the settings.
-
-```bash
-yarn add styled-components
-```
 
 Jest integration.
 
