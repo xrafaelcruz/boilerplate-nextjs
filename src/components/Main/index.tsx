@@ -1,6 +1,6 @@
-const Main = () => (
+const Main = ({ title = 'React Avançado' }) => (
   <main>
-    <h2>React Avançado</h2>
+    <h2>{title}</h2>
   </main>
 )
 

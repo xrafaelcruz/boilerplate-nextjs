@@ -217,10 +217,10 @@ import 'jest-styled-components'
 _To preview components and your documentation._
 
 ```bash
-npx -p @storybook/cli sb init --type react
+npx sb init
 ```
 
-Will be create `.storybook` and `stories` folders
+Will be create `.storybook` and `src/stories` folders
 
 Will be modified `package.json`
 After insert in `scripts storybook and build-storybook` the params `-s ./public` to use static images.
@@ -232,52 +232,25 @@ After insert in `scripts storybook and build-storybook` the params `-s ./public`
     "build-storybook": "build-storybook -s ./public"
 },
 "devDependencies": {
-    "@babel/core": "^7.10.4",
+    "@babel/core": "",
     ...,
-    "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-links": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
-    "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^5.3.19",
+    "@storybook/addon-actions": "",
+    "@storybook/addon-essentials": "",
+    "@storybook/addon-links": "",
+    "@storybook/react": "",
     ...,
-    "babel-loader": "^8.1.0",
+    "babel-loader": "",
     ...
 }
 ```
 
-To work with Typescript
-
-```bash
-yarn add --dev @storybook/preset-typescript
-```
-
 In `.storybook/main.js`
 
 ```bash
-stories: ['../src/components/**/stories.tsx']
-addons: ['@storybook/preset-typescript', ...]
+stories: ['../src/**/**/stories.tsx', ...]
 ```
 
-Create decorator `.storybook/withGlobalStyles.tsx` and add settings.
-Create `.storybook/config.js` and add settings.
-
-Addon Knobs
-
-```bash
-yarn add --dev @storybook/addon-knobs
-```
-
-In `.storybook/main.js`
-
-```bash
-addons: [..., '@storybook/addon-knobs/register']
-```
-
-In `src/components/Main/stories.tsx`
-
-```bash
-import { withKnobs, text } from '@storybook/addon-knobs'
-```
+In `.storybook/preview.js` add decorator settings.
 
 ## PWA
 
