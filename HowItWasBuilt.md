@@ -136,22 +136,6 @@ Create file `.vscode/settings.json` and add the settings.
 
 *You may need to restart vscode*
 
-## git hook with Husky and Lint-Staged
-
-_Prevent errors in commits._
-
-```bash
-yarn add --dev linst-staged husky
-```
-
-In `package.json`
-
-```bash
-"scripts": { ..., "lint": "eslint src --max-warnings=0" },
-"husky": { "hooks": {  "pre-commit": "lint-staged" } },
-"lint-staged": { "src/**/*": ["yarn lint --fix"] }
-```
-
 ## Jest
 
 _Framework of test._
