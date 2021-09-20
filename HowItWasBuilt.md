@@ -269,14 +269,10 @@ In `src/pages/_app`
 <link rel="manifest" href="/manifest.json" />
 ```
 
-Install cross-env to set NODE_ENV in windows
-
+Run
 ```bash
-npm i -g cross-env
-```
-
-```bash
-cross-env NODE_ENV=production yarn build
+NODE_ENV=production yarn build
+yarn start
 ```
 
 Will be create `public/sw.js` and `public/workbox-*.js`.
