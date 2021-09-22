@@ -10,7 +10,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - [Storybook](https://storybook.js.org/)
 - [Eslint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
-- [Husky](https://github.com/typicode/husky)
 
 #### requirements
 
